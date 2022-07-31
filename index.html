@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Serial Demo</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/makeabilitylab/p5js/_libraries/serial.js"></script>
+  <h1>Web Serial Demo</h1>
+  This demo uses a slider to send a number between 0-255 to your connected serial device.
+
+  <p></p>
+  <button id="connect-button" onclick="onConnectButtonClick()">Connect via Serial Port</button>
+
+  <script>
+    async function onConnectButtonClick() {
+      console.log("Connect button clicked!")
+    }
+    </script>
+    <script>
+      src="https://cdn.jsdelivr.net/gh/makeabilitylab/p5js/_libraries/serial.js">
+
+        serial.on(SerialEvents.CONNECTION_OPENED, onSerialConnectionOpened);
+        serial.on(SerialEvents.CONNECTION_CLOSED, onSerialConnectionClosed);
+        serial.on(SerialEvents.DATA_RECEIVED, onSerialDataReceived);
+        serial.on(SerialEvents.ERROR_OCCURRED, onSerialErrorOccurred);
+
+        function onSerialErrorOccurred(eventSender, error) {
+            console.log("onSerialErrorOccurred", error);
+        }
+
+        function onSerialConnectionOpened(eventSender) {
+            console.log("onSerialConnectionOpened", eventSender);
+        }
+
+        function onSerialConnectionClosed(eventSender) {
+            console.log("onSerialConnectionClosed", eventSender);
+        }
+
+        function onSerialDataReceived(eventSender, newData) {
+            console.log("onSerialDataReceived", newData);
+        }
+
+        async function onConnectButtonClick() {
+            console.log("Connect button clicked!");
+        }
+      </script>
+
+</body>
